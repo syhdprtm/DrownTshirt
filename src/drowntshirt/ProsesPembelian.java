@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author farre
+ * @author syuhada
  */
 public class ProsesPembelian extends javax.swing.JFrame {
     
@@ -213,7 +213,7 @@ public ProsesPembelian(String desainTerpilih) {
 
     
    this.setVisible(false);
-    new Konfirmasi().setVisible(true);
+    new Konfirmasi(obj).setVisible(true);
     
     }//GEN-LAST:event_btnBeliActionPerformed
 

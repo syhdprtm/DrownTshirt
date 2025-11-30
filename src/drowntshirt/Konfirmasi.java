@@ -9,16 +9,21 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author farre
+ * @author syuhada
  */
 public class Konfirmasi extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Konfirmasi.class.getName());
+    
+    private Pembeli data;
+    
+    public Konfirmasi(){}
 
     /**
      * Creates new form Konfirmasi
      */
-    public Konfirmasi() {
+    public Konfirmasi(Pembeli data) {
+        this.data = data;
         initComponents();
         
         riwayatTxt.setVisible(false);
@@ -26,15 +31,16 @@ public class Konfirmasi extends javax.swing.JFrame {
         btnUbah.setVisible(false);
         btnRiwayat.setVisible(false);
         
+        getData();
+        
     }
     
     public void getData(){
-        Pembeli obj = new Pembeli();
         
-        tipeInput.setText(obj.getTipe());
-        namaInput.setText(obj.getNama());
-        alamatInput.setText(obj.getAlamat());
-        ukuranInput.setText(obj.getUkuran()+"");
+        tipeInput.setText(data.getTipe());
+        namaInput.setText(data.getNama());
+        alamatInput.setText(data.getAlamat());
+        ukuranInput.setText(data.getUkuran()+"");
     }
 
     /**

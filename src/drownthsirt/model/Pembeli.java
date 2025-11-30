@@ -6,7 +6,7 @@ package drownthsirt.model;
 
 /**
  *
- * @author afif
+ * @author syuhada
  */
 public class Pembeli {
     private String tipe;

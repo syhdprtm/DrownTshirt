@@ -6,7 +6,7 @@ package drowntshirt;
 
 /**
  *
- * @author farre
+ * @author syuhada
  */
 public class RiwayatPembelian extends javax.swing.JFrame {
     
