@@ -7,7 +7,7 @@ public class TampilanAwal extends javax.swing.JFrame {
    
     public TampilanAwal() {
         initComponents();
-   
+   this.setLocationRelativeTo(null);
         
   
     }

@@ -8,6 +8,7 @@ public class Desain1 extends javax.swing.JFrame {
   
     public Desain1() {
         initComponents();
+        this.setLocationRelativeTo(null);
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
         @Override
         public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -17,6 +17,7 @@ public class Desain4 extends javax.swing.JFrame {
      */
     public Desain4() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

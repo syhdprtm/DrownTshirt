@@ -12,6 +12,7 @@ public class Desain2 extends javax.swing.JFrame {
     
     public Desain2() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
