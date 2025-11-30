@@ -111,6 +111,7 @@ public ProsesPembelian(String desainTerpilih) {
         btnBeli.addActionListener(this::btnBeliActionPerformed);
 
         cbUkuran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "S", "M", "L", "XL", "XXL", " " }));
+        cbUkuran.addActionListener(this::cbUkuranActionPerformed);
 
         jLabel4.setText("Pilih ukuran baju");
 
@@ -191,7 +192,7 @@ public ProsesPembelian(String desainTerpilih) {
     String nama = txtPembeli.getText().trim();
     String alamat = txtAlamat.getText().trim();
     String tipe = (String) cbTipe.getSelectedItem();
-    char ukuran = (char) cbUkuran.getSelectedItem();
+    String ukuran = (String) cbUkuran.getSelectedItem();
     Pembeli obj = new Pembeli();
     
     if (nama.isEmpty() || alamat.isEmpty()) {
@@ -207,7 +208,7 @@ public ProsesPembelian(String desainTerpilih) {
     obj.setNama(nama);
     obj.setTipe(tipe);
     obj.setAlamat(alamat);
-    obj.setUkuran(ukuran);
+    obj.setUkuran(ukuran.charAt(0));
     
 
     
@@ -235,6 +236,10 @@ public ProsesPembelian(String desainTerpilih) {
     private void cbTipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbTipeActionPerformed
+
+    private void cbUkuranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUkuranActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbUkuranActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,7 @@
  */
 package drowntshirt;
 
+import drownthsirt.model.Pembeli;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +26,15 @@ public class Konfirmasi extends javax.swing.JFrame {
         btnUbah.setVisible(false);
         btnRiwayat.setVisible(false);
         
+    }
+    
+    public void getData(){
+        Pembeli obj = new Pembeli();
+        
+        tipeInput.setText(obj.getTipe());
+        namaInput.setText(obj.getNama());
+        alamatInput.setText(obj.getAlamat());
+        ukuranInput.setText(obj.getUkuran()+"");
     }
 
     /**
@@ -97,6 +107,8 @@ public class Konfirmasi extends javax.swing.JFrame {
         tipeTxt.setText(" Tipe baju");
         jPanel2.add(tipeTxt);
         tipeTxt.setBounds(40, 30, 90, 18);
+
+        tipeInput.addActionListener(this::tipeInputActionPerformed);
         jPanel2.add(tipeInput);
         tipeInput.setBounds(40, 50, 150, 24);
 
@@ -185,6 +197,10 @@ public class Konfirmasi extends javax.swing.JFrame {
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void tipeInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipeInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipeInputActionPerformed
 
     /**
      * @param args the command line arguments
