@@ -45,6 +45,10 @@ public class Pembeli {
     public String getAlamat(){
         return alamat;
     }
+
+    public Object getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
     
