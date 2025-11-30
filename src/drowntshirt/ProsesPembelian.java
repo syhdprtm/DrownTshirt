@@ -1,6 +1,7 @@
 
 package drowntshirt;
 
+import drownthsirt.model.Pembeli;
 import javax.swing.JOptionPane;
 
 /**
@@ -187,10 +188,11 @@ public ProsesPembelian(String desainTerpilih) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeliActionPerformed
-String nama = txtPembeli.getText().trim();
+    String nama = txtPembeli.getText().trim();
     String alamat = txtAlamat.getText().trim();
-    String desain = (String) cbTipe.getSelectedItem();
-    String ukuran = (String) cbUkuran.getSelectedItem();
+    String tipe = (String) cbTipe.getSelectedItem();
+    char ukuran = (char) cbUkuran.getSelectedItem();
+    Pembeli obj = new Pembeli();
     
     if (nama.isEmpty() || alamat.isEmpty()) {
         JOptionPane.showMessageDialog(
@@ -202,9 +204,16 @@ String nama = txtPembeli.getText().trim();
         return; 
     }
     
-   
+    obj.setNama(nama);
+    obj.setTipe(tipe);
+    obj.setAlamat(alamat);
+    obj.setUkuran(ukuran);
+    
+
+    
+   this.setVisible(false);
     new Konfirmasi().setVisible(true);
-    this.dispose();
+    
     }//GEN-LAST:event_btnBeliActionPerformed
 
     private void btnKeluar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluar1ActionPerformed
