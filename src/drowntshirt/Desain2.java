@@ -3,7 +3,7 @@ package drowntshirt;
 
 /**
  *
- * @author farre
+ * @author syuhada
  */
 public class Desain2 extends javax.swing.JFrame {
     

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package drowntshirt;
 
 import drowntshirt.model.Pembeli;
@@ -30,6 +26,8 @@ public class Konfirmasi extends javax.swing.JFrame {
         ubahTxt.setVisible(false);
         btnUbah.setVisible(false);
         btnRiwayat.setVisible(false);
+        txtRiwayatPesanan.setVisible(false);
+        txtUbahPesanan.setVisible(false);
         
         getData();
         
@@ -74,7 +72,7 @@ public class Konfirmasi extends javax.swing.JFrame {
         txtUbahPesanan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 420));
+        setPreferredSize(new java.awt.Dimension(340, 437));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -114,31 +112,39 @@ public class Konfirmasi extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        tipeTxt.setText(" Tipe baju");
+        tipeTxt.setText("Tipe baju");
         jPanel2.add(tipeTxt);
         tipeTxt.setBounds(40, 30, 90, 16);
 
-        tipeInput.addActionListener(this::tipeInputActionPerformed);
+        tipeInput.setEditable(false);
+        tipeInput.addActionListener(this::tipeInput2ActionPerformed);
         jPanel2.add(tipeInput);
-        tipeInput.setBounds(40, 50, 150, 22);
+        tipeInput.setBounds(40, 50, 150, 30);
 
         ukuranTxt.setText("Ukuran");
         jPanel2.add(ukuranTxt);
         ukuranTxt.setBounds(40, 80, 90, 16);
+
+        ukuranInput.setEditable(false);
         jPanel2.add(ukuranInput);
-        ukuranInput.setBounds(40, 100, 150, 22);
+        ukuranInput.setBounds(40, 100, 150, 30);
 
         namaTxt.setText("Nama");
         jPanel2.add(namaTxt);
         namaTxt.setBounds(40, 130, 90, 16);
+
+        namaInput.setEditable(false);
+        namaInput.addActionListener(this::namaInputActionPerformed);
         jPanel2.add(namaInput);
-        namaInput.setBounds(40, 150, 150, 22);
+        namaInput.setBounds(40, 150, 150, 30);
 
         alamatTxt.setText("Alamat");
         jPanel2.add(alamatTxt);
         alamatTxt.setBounds(40, 180, 90, 16);
+
+        alamatInput.setEditable(false);
         jPanel2.add(alamatInput);
-        alamatInput.setBounds(40, 200, 150, 22);
+        alamatInput.setBounds(40, 200, 150, 30);
 
         beliTxt.setText("Lanjutkan membeli?");
         jPanel2.add(beliTxt);
@@ -156,12 +162,12 @@ public class Konfirmasi extends javax.swing.JFrame {
         btnUbah.setText("UBAH");
         btnUbah.addActionListener(this::btnUbahActionPerformed);
         jPanel2.add(btnUbah);
-        btnUbah.setBounds(210, 200, 80, 23);
+        btnUbah.setBounds(210, 200, 100, 23);
 
         btnRiwayat.setText("RIWAYAT");
         btnRiwayat.addActionListener(this::btnRiwayatActionPerformed);
         jPanel2.add(btnRiwayat);
-        btnRiwayat.setBounds(210, 100, 80, 23);
+        btnRiwayat.setBounds(210, 100, 100, 23);
 
         riwayatTxt.setText("Klik untuk melihat");
         jPanel2.add(riwayatTxt);
@@ -182,7 +188,8 @@ public class Konfirmasi extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatActionPerformed
-        // TODO add your handling code here:
+        new RiwayatPembelian().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRiwayatActionPerformed
 
     private void btnBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeliActionPerformed
@@ -217,12 +224,13 @@ public class Konfirmasi extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBeliActionPerformed
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
-        // TODO add your handling code here:
+        new ProsesPembelian().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnUbahActionPerformed
 
-    private void tipeInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipeInputActionPerformed
+    private void tipeInput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipeInput2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tipeInputActionPerformed
+    }//GEN-LAST:event_tipeInput2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         JOptionPane.showMessageDialog(
@@ -233,6 +241,10 @@ public class Konfirmasi extends javax.swing.JFrame {
         );
         System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void namaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaInputActionPerformed
 
     /**
      * @param args the command line arguments

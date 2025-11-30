@@ -15,12 +15,8 @@ public class Desain1 extends javax.swing.JFrame {
         }
     });
         
-         btnBeli.addActionListener(new java.awt.event.ActionListener() {
-        @Override
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnBeliActionPerformed(evt);
-        }
-    });
+         
+  
     }
 
     
@@ -126,6 +122,7 @@ public class Desain1 extends javax.swing.JFrame {
     private void btnBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeliActionPerformed
         this.dispose();
         new ProsesPembelian("Desain 1").setVisible(true);
+        
     }//GEN-LAST:event_btnBeliActionPerformed
 
     /**

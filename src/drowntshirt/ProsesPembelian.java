@@ -212,8 +212,10 @@ public ProsesPembelian(String desainTerpilih) {
     
 
     
-   this.setVisible(false);
-    new Konfirmasi(obj).setVisible(true);
+     new Konfirmasi(obj).setVisible(true);
+     this.setVisible(false);
+     
+     
     
     }//GEN-LAST:event_btnBeliActionPerformed
 

@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package drowntshirt;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,6 +29,7 @@ public class RiwayatPembelian extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnKeluar = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtTipebaju = new javax.swing.JTextField();
         txtUkuran = new javax.swing.JTextField();
@@ -60,6 +59,9 @@ public class RiwayatPembelian extends javax.swing.JFrame {
         btnKeluar.setText("KELUAR");
         btnKeluar.addActionListener(this::btnKeluarActionPerformed);
 
+        btnKembali.setText("KEMBALI");
+        btnKembali.addActionListener(this::btnKembaliActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -67,18 +69,25 @@ public class RiwayatPembelian extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
-                .addComponent(btnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                    .addComponent(btnKembali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnKeluar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnKeluar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnKembali)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel2.setText("Riwayat pembelian");
@@ -189,8 +198,19 @@ public class RiwayatPembelian extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
-        // TODO add your handling code here:
+         JOptionPane.showMessageDialog(
+            this,
+            "Terimakasih sudah menggunakan aplikasi Drown T-Shirt",
+            "Terima Kasih",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+        System.exit(0);
     }//GEN-LAST:event_btnKeluarActionPerformed
+
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
+         this.dispose(); 
+        new TampilanAwal().setVisible(true);
+    }//GEN-LAST:event_btnKembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,6 +241,7 @@ public class RiwayatPembelian extends javax.swing.JFrame {
     private javax.swing.JButton btnBefore;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnKembali;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPilih;
     private javax.swing.JComboBox<String> cbTipe;
