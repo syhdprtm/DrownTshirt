@@ -1,5 +1,7 @@
 package drowntshirt;
 
+import drowntshirt.model.Pembeli;
+import drowntshirt.service.KonfirmasiService;
 import javax.swing.JOptionPane;
 
 /**
@@ -9,12 +11,23 @@ import javax.swing.JOptionPane;
 public class RiwayatPembelian extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RiwayatPembelian.class.getName());
+    
+    private Pembeli data;
+    
+    private java.util.List<Pembeli> hasilCari = new java.util.ArrayList<>();
+    private int indexSaatIni = -1;
 
     /**
      * Creates new form StatusPembelian
      */
     public RiwayatPembelian() {
+        
+    }
+    public RiwayatPembelian(Pembeli data) {
+        this.data = data;
         initComponents();
+        setLocationRelativeTo(null);
+        txtNamaPembeli.setText(data.getNama());
     }
 
     /**
@@ -53,6 +66,7 @@ public class RiwayatPembelian extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cbUkuran = new javax.swing.JComboBox<>();
+        txtTotalData = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -120,21 +134,27 @@ public class RiwayatPembelian extends javax.swing.JFrame {
         jLabel6.setText("Nama");
 
         btnBefore.setText("BEFORE");
+        btnBefore.addActionListener(this::btnBeforeActionPerformed);
 
         btnNext.setText("NEXT");
+        btnNext.addActionListener(this::btnNextActionPerformed);
 
         jLabel7.setText("INGIN MENGHAPUS RIWAYAT PEMBELIAN INI?");
 
         btnDelete.setText("DELETE");
+        btnDelete.addActionListener(this::btnDeleteActionPerformed);
 
         jLabel8.setText("Tipe baju");
 
         cbTipe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Desain 1", "Desain 2", "Desain 3", "Desain 4" }));
+        cbTipe.addActionListener(this::cbTipeActionPerformed);
 
         btnCari.setText("CARI");
+        btnCari.addActionListener(this::btnCariActionPerformed);
 
         txtID.setEditable(false);
 
+        txtNamaPembeli.setText("-");
         txtNamaPembeli.addActionListener(this::txtNamaPembeliActionPerformed);
 
         jLabel9.setText("Nama");
@@ -144,6 +164,9 @@ public class RiwayatPembelian extends javax.swing.JFrame {
         jLabel11.setText("Ukuran");
 
         cbUkuran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Desain 1", "Desain 2", "Desain 3", "Desain 4" }));
+        cbUkuran.addActionListener(this::cbUkuranActionPerformed);
+
+        txtTotalData.setText("0 Data");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,9 +174,6 @@ public class RiwayatPembelian extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(288, 288, 288)
                         .addComponent(btnBefore, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,14 +187,18 @@ public class RiwayatPembelian extends javax.swing.JFrame {
                         .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtTotalData)
+                        .addGap(228, 228, 228)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(226, 226, 226)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -224,8 +248,8 @@ public class RiwayatPembelian extends javax.swing.JFrame {
                     .addComponent(txtNamaPembeli, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                     .addComponent(txtID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -242,22 +266,24 @@ public class RiwayatPembelian extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5))
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBefore)
+                            .addComponent(btnNext))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbUkuran, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(txtTotalData)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBefore)
-                    .addComponent(btnNext))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(6, 6, 6)
                 .addComponent(btnDelete)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -283,6 +309,114 @@ public class RiwayatPembelian extends javax.swing.JFrame {
     private void txtNamaPembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaPembeliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNamaPembeliActionPerformed
+
+    private void cbTipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTipeActionPerformed
+
+    private void cbUkuranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUkuranActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbUkuranActionPerformed
+
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        String nama = txtNamaPembeli.getText().trim();
+        String tipe = cbTipe.getSelectedItem().toString();
+        String ukuran = cbUkuran.getSelectedItem().toString();
+
+        KonfirmasiService service = new KonfirmasiService();
+        hasilCari = service.selectListObj(nama, tipe, ukuran);
+
+        if (hasilCari.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Data tidak ditemukan!");
+            return;
+        }
+
+        indexSaatIni = 0; // mulai dari data pertama
+        tampilkanData(indexSaatIni);
+        
+
+    }//GEN-LAST:event_btnCariActionPerformed
+
+    private void tampilkanData(int index) {
+        Pembeli p = hasilCari.get(index);
+
+        txtID.setText(String.valueOf(p.getId()));
+        txtTipebaju.setText(p.getTipe());
+        txtUkuran.setText(p.getUkuran());
+        txtNama.setText(p.getNama());
+        txtAlamat.setText(p.getAlamat());
+        
+        txtTotalData.setText(String.valueOf(index + 1)+" - "+ String.valueOf(hasilCari.size())+" Data");
+    }
+    
+    
+    private void btnBeforeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeforeActionPerformed
+        if (hasilCari.isEmpty()) return;
+
+        if (indexSaatIni > 0) {
+            indexSaatIni--;
+            tampilkanData(indexSaatIni);
+        } else {
+            JOptionPane.showMessageDialog(this, "Sudah di data pertama");
+        }
+    }//GEN-LAST:event_btnBeforeActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if (hasilCari.isEmpty()) return;
+
+        if (indexSaatIni < hasilCari.size() - 1) {
+            indexSaatIni++;
+            tampilkanData(indexSaatIni);
+        } else {
+            JOptionPane.showMessageDialog(this, "Sudah di data terakhir");
+        }
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        String nama = txtNamaPembeli.getText().trim();
+        String tipe = cbTipe.getSelectedItem().toString();
+        String ukuran = cbUkuran.getSelectedItem().toString();
+        
+        if (hasilCari.isEmpty()) return;
+
+        int id = Integer.parseInt(txtID.getText());
+
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Yakin ingin menghapus data ini?",
+                "Konfirmasi Delete",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm != JOptionPane.YES_OPTION) return;
+
+        KonfirmasiService service = new KonfirmasiService();
+        hasilCari = service.deleteObj(id,nama,tipe,ukuran);  // ambil daftar terbaru
+
+        if (hasilCari.isEmpty()) {
+            // kosongkan form jika sudah tidak ada data
+            txtID.setText("");
+            txtTipebaju.setText("");
+            txtUkuran.setText("");
+            txtNama.setText("");
+            txtAlamat.setText("");
+            txtTotalData.setText("0 Data");
+
+            JOptionPane.showMessageDialog(this, 
+                    "Data berhasil dihapus. Tidak ada data tersisa.");
+            indexSaatIni = -1;
+            return;
+        }
+
+        // jika masih ada data → kembali ke index 0
+        indexSaatIni = 0;
+        tampilkanData(indexSaatIni);
+
+        JOptionPane.showMessageDialog(this, 
+                "Data berhasil dihapus!");
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    
 
     /**
      * @param args the command line arguments
@@ -336,6 +470,7 @@ public class RiwayatPembelian extends javax.swing.JFrame {
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNamaPembeli;
     private javax.swing.JTextField txtTipebaju;
+    private javax.swing.JLabel txtTotalData;
     private javax.swing.JTextField txtUkuran;
     // End of variables declaration//GEN-END:variables
 }

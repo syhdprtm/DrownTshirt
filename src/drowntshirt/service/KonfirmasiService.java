@@ -5,6 +5,7 @@
 package drowntshirt.service;
 import drowntshirt.jdbc.Crud;
 import drowntshirt.model.Pembeli;
+import java.util.List;
 
 
 /**
@@ -31,23 +32,33 @@ public class KonfirmasiService extends Crud{
     }
     
     public Pembeli updateObj(Pembeli p){
-    if (p.getId() == 0) {
-            System.out.println("Id tidak boleh kosong!");
-            return null;
-        }
+        if (p.getId() == 0) {
+                System.out.println("Id tidak boleh kosong!");
+                return null;
+            }
 
-        Pembeli result = super.update(p); 
+            Pembeli result = super.update(p); 
 
-        if (result!=null) {
-            System.out.println("Update berhasil!");
-        } else {
-            System.out.println("Update gagal!");
-        }
+            if (result!=null) {
+                System.out.println("Update berhasil!");
+            } else {
+                System.out.println("Update gagal!");
+            }
 
-        return result;
-}
-
+            return result;
+    }
     
+    public List<Pembeli> selectListObj(String nama, String tipe, String ukuran){
+        return super.selectList(nama, tipe, ukuran);
+    }
+    
+    public List<Pembeli> deleteObj(int id, String nama, String tipe, String ukuran) {
+        super.deleteById(id,nama,tipe,ukuran);
+        return super.selectList(nama, "Semua", "Semua");
+    }
+
+
+
     
 
 }

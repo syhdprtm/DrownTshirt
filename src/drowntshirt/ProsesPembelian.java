@@ -153,6 +153,7 @@ public class ProsesPembelian extends javax.swing.JFrame {
         idInput.setEditable(false);
         idInput.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         idInput.setText("-");
+        idInput.addActionListener(this::idInputActionPerformed);
 
         txtId.setText("ID");
 
@@ -300,6 +301,10 @@ public class ProsesPembelian extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_btnBeliActionPerformed
+
+    private void idInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idInputActionPerformed
 
     /**
      * @param args the command line arguments

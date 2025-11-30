@@ -206,7 +206,7 @@ public class Konfirmasi extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatActionPerformed
-        new RiwayatPembelian().setVisible(true);
+        new RiwayatPembelian(data).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRiwayatActionPerformed
 
