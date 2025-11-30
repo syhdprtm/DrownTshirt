@@ -110,7 +110,7 @@ public ProsesPembelian(String desainTerpilih) {
         btnBeli.setText("Beli");
         btnBeli.addActionListener(this::btnBeliActionPerformed);
 
-        cbUkuran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "S", "M", "L", "XL", "XXL", " " }));
+        cbUkuran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "S", "M", "L", "XL", "XXL" }));
         cbUkuran.addActionListener(this::cbUkuranActionPerformed);
 
         jLabel4.setText("Pilih ukuran baju");
