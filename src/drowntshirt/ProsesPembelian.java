@@ -11,20 +11,46 @@ import javax.swing.JOptionPane;
 public class ProsesPembelian extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ProsesPembelian.class.getName());
-
+    
+    private Pembeli data;
+    
     /**
      * Creates new form AplikasiDrownTshirt
      */
     public ProsesPembelian() {
-        initComponents();
+       
         
     }
-public ProsesPembelian(String desainTerpilih) {
-    initComponents();
-    if (desainTerpilih != null && !desainTerpilih.isEmpty()) {
-        cbTipe.setSelectedItem(desainTerpilih);
+    
+    public ProsesPembelian(Pembeli data, int mode) {
+        // mode 0 = save, 1 = update
+        
+        this.data = data;
+        initComponents();
+        
+        getData();
+        
     }
-}
+    
+    public void getData(){
+        
+        idInput.setText(String.valueOf(data.getId()));
+        //String tipe = (String) cbTipe.getSelectedItem();
+       // String ukuran = (String) cbUkuran.getSelectedItem();
+   
+        cbTipe.setSelectedItem(data.getTipe());
+        cbUkuran.setSelectedItem(data.getUkuran());
+        txtPembeli.setText(data.getNama());
+        txtAlamat.setText(data.getAlamat());
+        //ukuranInput.setText(data.getUkuran());
+    }
+    
+    public ProsesPembelian(String desainTerpilih) {
+        initComponents();
+        if (desainTerpilih != null && !desainTerpilih.isEmpty()) {
+            cbTipe.setSelectedItem(desainTerpilih);
+        }
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -243,6 +269,7 @@ public ProsesPembelian(String desainTerpilih) {
     }//GEN-LAST:event_cbUkuranActionPerformed
 
     private void btnBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeliActionPerformed
+        String idTxt = idInput.getText().trim();
         String nama = txtPembeli.getText().trim();
         String alamat = txtAlamat.getText().trim();
         String tipe = (String) cbTipe.getSelectedItem();
@@ -257,6 +284,10 @@ public ProsesPembelian(String desainTerpilih) {
                 JOptionPane.WARNING_MESSAGE
             );
             return;
+        }
+        
+        if(!idTxt.equals("-")){
+            obj.setId(Integer.valueOf(idTxt));
         }
 
         obj.setNama(nama);

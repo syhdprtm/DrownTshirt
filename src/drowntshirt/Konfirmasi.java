@@ -34,11 +34,16 @@ public class Konfirmasi extends javax.swing.JFrame {
     }
     
     public void getData(){
-        idInput.setText(String.valueOf(data.getId()));
+        if(data.getId()==0){
+            idInput.setText("-");
+        }else {
+            idInput.setText(String.valueOf(data.getId()));
+        }
         tipeInput.setText(data.getTipe());
         namaInput.setText(data.getNama());
         alamatInput.setText(data.getAlamat());
         ukuranInput.setText(data.getUkuran());
+        
     }
 
     /**
@@ -115,7 +120,7 @@ public class Konfirmasi extends javax.swing.JFrame {
 
         idTxt.setText("ID");
         jPanel2.add(idTxt);
-        idTxt.setBounds(20, 40, 90, 16);
+        idTxt.setBounds(20, 40, 90, 18);
 
         idInput.setEditable(false);
         idInput.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -125,7 +130,7 @@ public class Konfirmasi extends javax.swing.JFrame {
 
         ukuranTxt.setText("Ukuran");
         jPanel2.add(ukuranTxt);
-        ukuranTxt.setBounds(20, 140, 90, 16);
+        ukuranTxt.setBounds(20, 140, 90, 18);
 
         ukuranInput.setEditable(false);
         ukuranInput.addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -138,7 +143,7 @@ public class Konfirmasi extends javax.swing.JFrame {
 
         namaTxt.setText("Nama");
         jPanel2.add(namaTxt);
-        namaTxt.setBounds(20, 190, 90, 16);
+        namaTxt.setBounds(20, 190, 90, 18);
 
         namaInput.setEditable(false);
         namaInput.addActionListener(this::namaInputActionPerformed);
@@ -147,7 +152,7 @@ public class Konfirmasi extends javax.swing.JFrame {
 
         alamatTxt.setText("Alamat");
         jPanel2.add(alamatTxt);
-        alamatTxt.setBounds(20, 240, 90, 16);
+        alamatTxt.setBounds(20, 240, 90, 18);
 
         alamatInput.setEditable(false);
         jPanel2.add(alamatInput);
@@ -155,7 +160,7 @@ public class Konfirmasi extends javax.swing.JFrame {
 
         beliTxt.setText("Lanjutkan membeli?");
         jPanel2.add(beliTxt);
-        beliTxt.setBounds(20, 310, 110, 16);
+        beliTxt.setBounds(20, 310, 110, 18);
 
         btnBeli.setText("BELI");
         btnBeli.addActionListener(this::btnBeliActionPerformed);
@@ -164,7 +169,7 @@ public class Konfirmasi extends javax.swing.JFrame {
 
         ubahTxt.setText("Klik ubah jika ingin pesanan anda");
         jPanel2.add(ubahTxt);
-        ubahTxt.setBounds(310, 310, 180, 16);
+        ubahTxt.setBounds(310, 310, 180, 18);
 
         btnUbah.setText("UBAH");
         btnUbah.addActionListener(this::btnUbahActionPerformed);
@@ -178,7 +183,7 @@ public class Konfirmasi extends javax.swing.JFrame {
 
         riwayatTxt.setText("Klik untuk melihat riwayat pesanan anda");
         jPanel2.add(riwayatTxt);
-        riwayatTxt.setBounds(300, 250, 220, 16);
+        riwayatTxt.setBounds(300, 250, 220, 18);
 
         tipeInput.setEditable(false);
         tipeInput.addActionListener(this::tipeInput2ActionPerformed);
@@ -187,12 +192,12 @@ public class Konfirmasi extends javax.swing.JFrame {
 
         tipeTxt.setText("Tipe baju");
         jPanel2.add(tipeTxt);
-        tipeTxt.setBounds(20, 90, 90, 16);
+        tipeTxt.setBounds(20, 90, 90, 18);
 
         jLabel2.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel2.setText("MOHON KONFIRMASI PESANAN ANDA");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(90, 10, 350, 24);
+        jLabel2.setBounds(90, 10, 350, 22);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 70, 530, 440);
@@ -226,17 +231,31 @@ public class Konfirmasi extends javax.swing.JFrame {
         alamatTxt.setVisible(false);
         alamatInput.setVisible(false);
         
+        // mode create
+        int mode = 0;
+        if(!idInput.getText().equals("-")){
+            // mode update
+            mode = 1;
+        }
+        
         
         try {
+            Pembeli pembeli = new Pembeli();
             KonfirmasiService service = new KonfirmasiService();
-            boolean sukses = service.insertObj(data);
+            if(mode==0){
+                pembeli = service.insertObj(data);
+            }else {
+                pembeli = service.update(data);
+            }
+            
 
-            if (sukses) {
+            if (pembeli!=null) {
                 JOptionPane.showMessageDialog(this, "Berhasil disimpan!");
             } else {
                 JOptionPane.showMessageDialog(this, "Gagal menyimpan ke database");
             }
         } catch (Exception e) {
+            System.err.println("error : "+e.getMessage());
         }
         
 
@@ -245,6 +264,7 @@ public class Konfirmasi extends javax.swing.JFrame {
         riwayatTxt.setVisible(true);
         btnUbah.setVisible(true);
         btnRiwayat.setVisible(true);
+        
         
     }//GEN-LAST:event_btnBeliActionPerformed
 

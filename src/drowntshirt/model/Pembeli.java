@@ -9,10 +9,19 @@ package drowntshirt.model;
  * @author syuhada
  */
 public class Pembeli {
+    private int id;
     private String tipe;
     private String ukuran;
     private String nama;
     private String alamat;
+    
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public int getId(){
+        return id;
+    }
     
     public void setTipe(String tipe){
         this.tipe = tipe;
@@ -46,9 +55,6 @@ public class Pembeli {
         return alamat;
     }
 
-    public Object getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
     
     

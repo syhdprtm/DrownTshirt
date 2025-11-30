@@ -12,16 +12,16 @@ import drowntshirt.model.Pembeli;
  * @author syuhada
  */
 public class KonfirmasiService extends Crud{
-    public boolean insertObj(Pembeli p){
+    public Pembeli insertObj(Pembeli p){
         
         if (p.getNama() == null || p.getNama().isEmpty()) {
             System.out.println("Nama tidak boleh kosong!");
-            return false;
+            return null;
         }
 
-        boolean result = super.insert(p); 
+        Pembeli result = super.insert(p); 
 
-        if (result) {
+        if (result !=null) {
             System.out.println("Insert berhasil!");
         } else {
             System.out.println("Insert gagal!");
@@ -30,30 +30,24 @@ public class KonfirmasiService extends Crud{
         return result;
     }
     
-    public static void main(String[] args) {
-        Pembeli p = new Pembeli();
-        KonfirmasiService k = new KonfirmasiService();
-        
-        k.insertObj(p);
-        
-    }
-//    public boolean insert(Pembeli p) {
-//        String sql = "INSERT INTO pembeli (tipe, ukuran, nama, alamat) VALUES (?, ?, ?, ?)";
-//
-//        try (Connection conn = DatabaseConnection.getConnection();
-//             PreparedStatement ps = conn.prepareStatement(sql)) {
-//
-//            ps.setString(1, p.getTipe());
-//            ps.setString(2, String.valueOf(p.getUkuran()));
-//            ps.setString(3, p.getNama());
-//            ps.setString(4, p.getAlamat());
-//
-//            ps.executeUpdate();
-//            return true;
-//
-//        } catch (SQLException e) {
-//            System.err.println("Gagal insert: " + e.getMessage());
-//            return false;
-//        }
-//    }
+    public Pembeli updateObj(Pembeli p){
+    if (p.getId() == 0) {
+            System.out.println("Id tidak boleh kosong!");
+            return null;
+        }
+
+        Pembeli result = super.update(p); 
+
+        if (result!=null) {
+            System.out.println("Update berhasil!");
+        } else {
+            System.out.println("Update gagal!");
+        }
+
+        return result;
+}
+
+    
+    
+
 }

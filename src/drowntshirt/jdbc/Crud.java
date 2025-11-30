@@ -16,8 +16,39 @@ import java.sql.SQLException;
 public class Crud {
     
     
-    public boolean insert(Pembeli p) {
+    public Pembeli insert(Pembeli p) {
         String sql = "INSERT INTO pembeli (tipe, ukuran, nama, alamat) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+
+            ps.setString(1, p.getTipe());
+            ps.setString(2, p.getUkuran());
+            ps.setString(3, p.getNama());
+            ps.setString(4, p.getAlamat());
+
+            int rows = ps.executeUpdate();
+
+            if (rows > 0) {
+                try (var rs = ps.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        int idBaru = rs.getInt(1);
+                        p.setId(idBaru);   
+                    }
+                }
+            }
+
+            return p;  
+
+        } catch (SQLException e) {
+            System.err.println("Gagal insert: " + e.getMessage());
+            return null;
+        }
+    }
+
+    
+    public Pembeli update(Pembeli p) {
+        String sql = "UPDATE pembeli SET tipe = ?, ukuran = ?, nama = ?, alamat = ? WHERE id = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -26,13 +57,19 @@ public class Crud {
             ps.setString(2, p.getUkuran());
             ps.setString(3, p.getNama());
             ps.setString(4, p.getAlamat());
+            ps.setInt(5, p.getId());
 
-            ps.executeUpdate();
-            return true;
+            int rows = ps.executeUpdate();
+            
+            if (rows > 0) {
+                return p;
+            }
+            return null;
 
         } catch (SQLException e) {
-            System.err.println("Gagal insert: " + e.getMessage());
-            return false;
+            System.err.println("Gagal update: " + e.getMessage());
+            return null;
         }
     }
+
 }
