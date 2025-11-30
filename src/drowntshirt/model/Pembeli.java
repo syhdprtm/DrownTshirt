@@ -10,7 +10,7 @@ package drowntshirt.model;
  */
 public class Pembeli {
     private String tipe;
-    private char ukuran;
+    private String ukuran;
     private String nama;
     private String alamat;
     
@@ -22,11 +22,11 @@ public class Pembeli {
         return tipe;
     }
     
-    public void setUkuran(char ukuran){
+    public void setUkuran(String ukuran){
         this.ukuran = ukuran;
     }
     
-    public char getUkuran(){
+    public String getUkuran(){
         return ukuran;
     }
     

@@ -1,6 +1,7 @@
 package drowntshirt;
 
 import drowntshirt.model.Pembeli;
+import drowntshirt.service.KonfirmasiService;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,7 +39,7 @@ public class Konfirmasi extends javax.swing.JFrame {
         tipeInput.setText(data.getTipe());
         namaInput.setText(data.getNama());
         alamatInput.setText(data.getAlamat());
-        ukuranInput.setText(data.getUkuran()+"");
+        ukuranInput.setText(data.getUkuran());
     }
 
     /**
@@ -212,6 +213,18 @@ public class Konfirmasi extends javax.swing.JFrame {
         alamatInput.setVisible(false);
         txtRiwayatPesanan.setVisible(false);
         txtUbahPesanan.setVisible(false);
+        
+        try {
+            KonfirmasiService service = new KonfirmasiService();
+            boolean sukses = service.insertObj(data);
+
+            if (sukses) {
+                JOptionPane.showMessageDialog(this, "Berhasil disimpan!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Gagal menyimpan ke database");
+            }
+        } catch (Exception e) {
+        }
         
 
     // Tampilkan tombol Ubah dan Riwayat
