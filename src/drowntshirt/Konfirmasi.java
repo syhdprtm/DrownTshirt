@@ -4,7 +4,7 @@
  */
 package drowntshirt;
 
-import drownthsirt.model.Pembeli;
+import drowntshirt.model.Pembeli;
 import javax.swing.JOptionPane;
 
 /**
@@ -70,9 +70,11 @@ public class Konfirmasi extends javax.swing.JFrame {
         btnUbah = new javax.swing.JButton();
         btnRiwayat = new javax.swing.JButton();
         riwayatTxt = new javax.swing.JLabel();
+        txtRiwayatPesanan = new javax.swing.JLabel();
+        txtUbahPesanan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(550, 420));
+        setPreferredSize(new java.awt.Dimension(600, 420));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -83,6 +85,7 @@ public class Konfirmasi extends javax.swing.JFrame {
         jLabel1.setText("DROWN T-SHIRT");
 
         jButton4.setText("KELUAR");
+        jButton4.addActionListener(this::jButton4ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,9 +94,9 @@ public class Konfirmasi extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,65 +109,74 @@ public class Konfirmasi extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 530, 70);
+        jPanel1.setBounds(0, 0, 330, 70);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
         tipeTxt.setText(" Tipe baju");
         jPanel2.add(tipeTxt);
-        tipeTxt.setBounds(40, 30, 90, 18);
+        tipeTxt.setBounds(40, 30, 90, 16);
 
         tipeInput.addActionListener(this::tipeInputActionPerformed);
         jPanel2.add(tipeInput);
-        tipeInput.setBounds(40, 50, 150, 24);
+        tipeInput.setBounds(40, 50, 150, 22);
 
         ukuranTxt.setText("Ukuran");
         jPanel2.add(ukuranTxt);
-        ukuranTxt.setBounds(40, 80, 90, 18);
+        ukuranTxt.setBounds(40, 80, 90, 16);
         jPanel2.add(ukuranInput);
-        ukuranInput.setBounds(40, 100, 150, 24);
+        ukuranInput.setBounds(40, 100, 150, 22);
 
         namaTxt.setText("Nama");
         jPanel2.add(namaTxt);
-        namaTxt.setBounds(40, 130, 90, 18);
+        namaTxt.setBounds(40, 130, 90, 16);
         jPanel2.add(namaInput);
-        namaInput.setBounds(40, 150, 150, 24);
+        namaInput.setBounds(40, 150, 150, 22);
 
         alamatTxt.setText("Alamat");
         jPanel2.add(alamatTxt);
-        alamatTxt.setBounds(40, 180, 90, 18);
+        alamatTxt.setBounds(40, 180, 90, 16);
         jPanel2.add(alamatInput);
-        alamatInput.setBounds(40, 200, 150, 24);
+        alamatInput.setBounds(40, 200, 150, 22);
 
         beliTxt.setText("Lanjutkan membeli?");
         jPanel2.add(beliTxt);
-        beliTxt.setBounds(40, 250, 180, 18);
+        beliTxt.setBounds(40, 250, 180, 16);
 
         btnBeli.setText("BELI");
         btnBeli.addActionListener(this::btnBeliActionPerformed);
         jPanel2.add(btnBeli);
-        btnBeli.setBounds(70, 270, 120, 24);
+        btnBeli.setBounds(40, 270, 120, 23);
 
-        ubahTxt.setText("Klik ubah jika ingin mengubah pesanan");
+        ubahTxt.setText("Klik ubah jika ingin ");
         jPanel2.add(ubahTxt);
-        ubahTxt.setBounds(200, 160, 280, 18);
+        ubahTxt.setBounds(210, 150, 110, 16);
 
         btnUbah.setText("UBAH");
         btnUbah.addActionListener(this::btnUbahActionPerformed);
         jPanel2.add(btnUbah);
-        btnUbah.setBounds(290, 190, 72, 24);
+        btnUbah.setBounds(210, 200, 80, 23);
 
         btnRiwayat.setText("RIWAYAT");
         btnRiwayat.addActionListener(this::btnRiwayatActionPerformed);
         jPanel2.add(btnRiwayat);
-        btnRiwayat.setBounds(280, 100, 95, 24);
+        btnRiwayat.setBounds(210, 100, 80, 23);
 
-        riwayatTxt.setText("Klik untuk melihat riwayat pembelian");
+        riwayatTxt.setText("Klik untuk melihat");
         jPanel2.add(riwayatTxt);
-        riwayatTxt.setBounds(220, 70, 234, 18);
+        riwayatTxt.setBounds(210, 50, 100, 16);
+
+        txtRiwayatPesanan.setText("riwayat pesanan");
+        jPanel2.add(txtRiwayatPesanan);
+        txtRiwayatPesanan.setBounds(210, 70, 90, 16);
+
+        txtUbahPesanan.setText("mengubah pesanan");
+        jPanel2.add(txtUbahPesanan);
+        txtUbahPesanan.setBounds(210, 170, 110, 16);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 70, 530, 330);
+        jPanel2.setBounds(0, 70, 330, 330);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -191,6 +203,8 @@ public class Konfirmasi extends javax.swing.JFrame {
         ukuranInput.setVisible(false);
         alamatTxt.setVisible(false);
         alamatInput.setVisible(false);
+        txtRiwayatPesanan.setVisible(false);
+        txtUbahPesanan.setVisible(false);
         
 
     // Tampilkan tombol Ubah dan Riwayat
@@ -198,6 +212,8 @@ public class Konfirmasi extends javax.swing.JFrame {
         riwayatTxt.setVisible(true);
         btnUbah.setVisible(true);
         btnRiwayat.setVisible(true);
+        txtRiwayatPesanan.setVisible(true);
+        txtUbahPesanan.setVisible(true);
     }//GEN-LAST:event_btnBeliActionPerformed
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
@@ -207,6 +223,16 @@ public class Konfirmasi extends javax.swing.JFrame {
     private void tipeInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipeInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipeInputActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        JOptionPane.showMessageDialog(
+            this,
+            "Terimakasih sudah menggunakan aplikasi Drown T-Shirt",
+            "Terima Kasih",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+        System.exit(0);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,6 +275,8 @@ public class Konfirmasi extends javax.swing.JFrame {
     private javax.swing.JLabel riwayatTxt;
     private javax.swing.JTextField tipeInput;
     private javax.swing.JLabel tipeTxt;
+    private javax.swing.JLabel txtRiwayatPesanan;
+    private javax.swing.JLabel txtUbahPesanan;
     private javax.swing.JLabel ubahTxt;
     private javax.swing.JTextField ukuranInput;
     private javax.swing.JLabel ukuranTxt;
