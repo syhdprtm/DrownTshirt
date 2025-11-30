@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package drowntshirt;
 
 /**
@@ -12,9 +9,7 @@ public class Desain2 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Desain2.class.getName());
 
-    /**
-     * Creates new form Desain2
-     */
+    
     public Desain2() {
         initComponents();
     }
@@ -45,10 +40,13 @@ public class Desain2 extends javax.swing.JFrame {
         jLabel1.setText("DROWN T-SHIRT");
 
         btnBeli.setText("BELI");
+        btnBeli.addActionListener(this::btnBeliActionPerformed);
 
         btnNext.setText("SELANJUTNYA");
+        btnNext.addActionListener(this::btnNextActionPerformed);
 
         btnBefore.setText("SEBELUMNYA");
+        btnBefore.addActionListener(this::btnBeforeActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -109,6 +107,23 @@ public class Desain2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBeforeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeforeActionPerformed
+        this.dispose();
+        new Desain1().setVisible(true);
+    }//GEN-LAST:event_btnBeforeActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        this.dispose();
+        new Desain3().setVisible(true);
+        
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeliActionPerformed
+        this.dispose();
+        new ProsesPembelian("Desain 2").setVisible(true);
+        
+    }//GEN-LAST:event_btnBeliActionPerformed
 
     /**
      * @param args the command line arguments

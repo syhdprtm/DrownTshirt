@@ -31,7 +31,6 @@ public class Desain4 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnBeli = new javax.swing.JButton();
-        btnNext = new javax.swing.JButton();
         btnBefore = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -45,10 +44,10 @@ public class Desain4 extends javax.swing.JFrame {
         jLabel1.setText("DROWN T-SHIRT");
 
         btnBeli.setText("BELI");
-
-        btnNext.setText("SELANJUTNYA");
+        btnBeli.addActionListener(this::btnBeliActionPerformed);
 
         btnBefore.setText("SEBELUMNYA");
+        btnBefore.addActionListener(this::btnBeforeActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,11 +64,6 @@ public class Desain4 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBeli, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15))))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(239, Short.MAX_VALUE)
-                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(16, 16, 16)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,11 +75,6 @@ public class Desain4 extends javax.swing.JFrame {
                     .addComponent(btnBeli)
                     .addComponent(btnBefore))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(btnNext)
-                    .addContainerGap(39, Short.MAX_VALUE)))
         );
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drowntshirt/5.jpg"))); // NOI18N
@@ -108,6 +97,17 @@ public class Desain4 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBeforeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeforeActionPerformed
+        this.dispose(); 
+        new Desain3().setVisible(true);
+        
+    }//GEN-LAST:event_btnBeforeActionPerformed
+
+    private void btnBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeliActionPerformed
+        this.dispose(); 
+        new ProsesPembelian("Desain 4").setVisible(true);
+    }//GEN-LAST:event_btnBeliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,7 +137,6 @@ public class Desain4 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBefore;
     private javax.swing.JButton btnBeli;
-    private javax.swing.JButton btnNext;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

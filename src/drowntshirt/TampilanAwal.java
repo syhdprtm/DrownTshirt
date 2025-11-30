@@ -1,5 +1,5 @@
 package drowntshirt;
-
+import javax.swing.JOptionPane;
 public class TampilanAwal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TampilanAwal.class.getName());
@@ -7,12 +7,9 @@ public class TampilanAwal extends javax.swing.JFrame {
    
     public TampilanAwal() {
         initComponents();
-    btnLihatbaju.addActionListener(new java.awt.event.ActionListener() {
-        @Override
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnLihatbajuActionPerformed(evt);
-        }
-    });
+   
+        
+  
     }
     
 
@@ -24,6 +21,7 @@ public class TampilanAwal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnLihatbaju = new javax.swing.JButton();
+        btnKeluarProgram = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -41,6 +39,10 @@ public class TampilanAwal extends javax.swing.JFrame {
         btnLihatbaju.setText("lihat baju");
         btnLihatbaju.addActionListener(this::btnLihatbajuActionPerformed);
 
+        btnKeluarProgram.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        btnKeluarProgram.setText("keluar");
+        btnKeluarProgram.addActionListener(this::btnKeluarProgramActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -49,17 +51,24 @@ public class TampilanAwal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                .addComponent(btnLihatbaju)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnLihatbaju, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKeluarProgram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnLihatbaju))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnLihatbaju)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnKeluarProgram)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jLabel3.setFont(new java.awt.Font("Stencil", 1, 18)); // NOI18N
@@ -114,6 +123,16 @@ public class TampilanAwal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnLihatbajuActionPerformed
 
+    private void btnKeluarProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarProgramActionPerformed
+        JOptionPane.showMessageDialog(
+            this,
+            "Terimakasih sudah menggunakan aplikasi Drown T-Shirt",
+            "Terima Kasih",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+        System.exit(0);
+    }//GEN-LAST:event_btnKeluarProgramActionPerformed
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -138,6 +157,7 @@ public class TampilanAwal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnKeluarProgram;
     private javax.swing.JButton btnLihatbaju;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

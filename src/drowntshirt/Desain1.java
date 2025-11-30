@@ -1,7 +1,5 @@
 package drowntshirt;
-import drowntshirt.TampilanAwal;
-import drowntshirt.Desain2;
-import drowntshirt.ProsesPembelian;
+
 
 public class Desain1 extends javax.swing.JFrame {
     
@@ -16,12 +14,7 @@ public class Desain1 extends javax.swing.JFrame {
             btnKeluarActionPerformed(evt);
         }
     });
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
-        @Override
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnNextActionPerformed(evt);
-        }
-    });
+        
          btnBeli.addActionListener(new java.awt.event.ActionListener() {
         @Override
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,18 +112,20 @@ public class Desain1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
-         new TampilanAwal().setVisible(true);
-    this.dispose();
+        this.dispose(); 
+        new TampilanAwal().setVisible(true);
+    
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        this.dispose();
         new Desain2().setVisible(true);
-    this.dispose();
+    
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeliActionPerformed
-       new ProsesPembelian().setVisible(true);
-    this.dispose();
+        this.dispose();
+        new ProsesPembelian("Desain 1").setVisible(true);
     }//GEN-LAST:event_btnBeliActionPerformed
 
     /**

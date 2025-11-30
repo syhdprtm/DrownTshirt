@@ -64,13 +64,6 @@
                       </Group>
                   </Group>
               </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="239" max="32767" attributes="0"/>
-                      <Component id="btnNext" min="-2" pref="120" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -84,13 +77,6 @@
                       <Component id="btnBefore" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="btnNext" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="39" max="32767" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -114,16 +100,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="BELI"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnNext">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="SELANJUTNYA"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBeliActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBefore">
           <Properties>
             <Property name="text" type="java.lang.String" value="SEBELUMNYA"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBeforeActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

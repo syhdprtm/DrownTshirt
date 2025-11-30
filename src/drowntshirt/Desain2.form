@@ -116,16 +116,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="BELI"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBeliActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNext">
           <Properties>
             <Property name="text" type="java.lang.String" value="SELANJUTNYA"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBefore">
           <Properties>
             <Property name="text" type="java.lang.String" value="SEBELUMNYA"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBeforeActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

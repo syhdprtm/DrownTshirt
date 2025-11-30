@@ -45,10 +45,13 @@ public class Desain3 extends javax.swing.JFrame {
         jLabel1.setText("DROWN T-SHIRT");
 
         btnBeli.setText("BELI");
+        btnBeli.addActionListener(this::btnBeliActionPerformed);
 
         btnNext.setText("SELANJUTNYA");
+        btnNext.addActionListener(this::btnNextActionPerformed);
 
         btnBefore.setText("SEBELUMNYA");
+        btnBefore.addActionListener(this::btnBeforeActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -109,6 +112,23 @@ public class Desain3 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBeforeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeforeActionPerformed
+        this.dispose(); 
+        new Desain2().setVisible(true);
+        
+    }//GEN-LAST:event_btnBeforeActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        this.dispose(); 
+        new Desain4().setVisible(true);
+        
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeliActionPerformed
+        this.dispose(); 
+        new ProsesPembelian("Desain 3").setVisible(true);
+    }//GEN-LAST:event_btnBeliActionPerformed
 
     /**
      * @param args the command line arguments
