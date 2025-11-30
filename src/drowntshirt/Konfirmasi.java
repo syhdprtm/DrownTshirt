@@ -269,7 +269,8 @@ public class Konfirmasi extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBeliActionPerformed
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
-        new ProsesPembelian().setVisible(true);
+        new ProsesPembelian(data).setVisible(true);
+//        this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnUbahActionPerformed
 

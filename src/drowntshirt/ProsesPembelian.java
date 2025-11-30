@@ -22,11 +22,12 @@ public class ProsesPembelian extends javax.swing.JFrame {
         
     }
     
-    public ProsesPembelian(Pembeli data, int mode) {
+    public ProsesPembelian(Pembeli data) {
         // mode 0 = save, 1 = update
         
         this.data = data;
         initComponents();
+        setLocationRelativeTo(null); // tampil di tengah layar
         
         getData();
         
