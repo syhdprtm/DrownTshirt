@@ -208,7 +208,7 @@ public ProsesPembelian(String desainTerpilih) {
     obj.setNama(nama);
     obj.setTipe(tipe);
     obj.setAlamat(alamat);
-    obj.setUkuran(ukuran.charAt(0));
+    obj.setUkuran(ukuran);
     
 
     
